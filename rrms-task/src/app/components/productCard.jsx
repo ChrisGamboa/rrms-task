@@ -15,18 +15,37 @@ const ProductInputInfo = ({ label }) => {
     return (
         <div className='grid-cols-2 grid gap-2'>
             <label className='font-bold mr-2 p-2'>{label}: </label>
-            <input className='col-auto bg-gray-600 rounded-xl m-2 p-1' type='text' />
+            <input className='col-auto bg-gray-600 rounded-xl m-2 p-1' type='text' required/>
         </div>
     )
 }
 
 const AddProductModal = ({ onClose }) => {
+    const [submitButtonText, setSubmitButtonText] = useState('Submit');
+    const [submitColor, setSubmitColor] = useState('bg-blue-600');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setSubmitButtonText('Submitting...');
+        
+        setTimeout(() => {
+            setSubmitColor('bg-green-600');
+            setSubmitButtonText('Success!');
+
+            setTimeout(() => {
+                onClose();
+                setSubmitButtonText('Submit');
+            }, 2000);
+
+        }, 2000);
+    }
+
     return (
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-xs">
             <div className='flex flex-row text-white bg-gray-800 rounded-2xl'>
                 <div className='flex flex-col m-2 p-4 gap-4 rounded-lg'>
                     <button className='absolute top-2 right-2 rounded-3xl text-white bg-red-500 p-4' onClick={onClose}>Close</button>
-                    <form className='flex flex-col'>
+                    <form className='flex flex-col' onSubmit={handleSubmit}>
                         <ProductInputInfo label='Name' />
                         <ProductInputInfo label='Price' />
                         <ProductInputInfo label='Category' />
@@ -36,7 +55,7 @@ const AddProductModal = ({ onClose }) => {
                         <ProductInputInfo label='Rating Count' />
                         <ProductInputInfo label='Image URL' />
                         <ProductInputInfo label='SKU' />
-                        <button className='bg-blue-600 text-white p-2 m-4 rounded-xl'>Submit</button>
+                        <button type='submit' className={`${submitColor} text-white p-2 m-4 rounded-xl`}>{submitButtonText}</button>
                     </form>
                 </div>
             </div>
@@ -125,10 +144,7 @@ const ProductTable = () => {
             {openProductInfoModal && <ProductInfoModal onClose={() => setopenProductInfoModal(false)} productInfo={modalProduct} />}
             {openAddProductModal && <AddProductModal onClose={() => setOpenAddProductModal(false)} />}
         </div>
-
-
     )
 }
-
 
 export { ProductTable };
