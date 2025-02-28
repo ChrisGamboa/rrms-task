@@ -43,8 +43,8 @@ const AddProductModal = ({ onClose }) => {
 
     return (
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-xs">
-            <div className='flex flex-row text-white bg-gray-800 rounded-2xl'>
-                <div className='sm:max-h-80 lg:max-h-full overflow-y-scroll m-2 p-4 gap-2 rounded-lg'>
+            <div className='sm:max-h-80 lg:max-h-full overflow-y-scroll flex flex-row text-white bg-gray-800 rounded-2xl'>
+                <div className=' m-2 p-4 gap-2 rounded-lg'>
                     <h2 className='font-bold flex justify-left text-2xl ml-8 mb-2'>Enter Item Details</h2>
                     <form className='' onSubmit={handleSubmit}>
                         <ProductInputInfo label='Name' />
@@ -72,7 +72,7 @@ const ProductInfoModal = ({ productInfo, onClose }) => {
 
     return (
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-xs">
-            <div className='sm:max-h-80 lg:max-h-full overflow-y-scroll w-auto text-white bg-gray-800 rounded-2xl'>
+            <div className='container sm:max-h-80 lg:max-h-full overflow-y-scroll w-auto text-white bg-gray-800 rounded-2xl'>
                 <div className=' m-2 p-2 rounded-lg'>
                     <h2 className='font-bold flex justify-left text-2xl ml-8 mb-2'>Item Details</h2>
                     <ProductLabel label='Name' value={productInfo.name} />
