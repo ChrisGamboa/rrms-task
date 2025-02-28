@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import { ProductTable } from './components/productCard';
+import { ProductTable } from './components/productComponents';
 
 const productButtonProps = {
   text: 'Products',
