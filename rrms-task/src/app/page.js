@@ -18,8 +18,8 @@ export default function Home() {
   return (
     <div className='flex-col'>
       <div className='flex flex-row justify-center'>
-        <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-blue-600' onClick={() => setOpenProducts(!openProducts)}>Products</button>
-        <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-green-700' onClick={() => setOpenCarts(!openCarts)}>Carts</button>
+        <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-blue-600' onClick={() => setOpenProducts(!openProducts)}>Products </button>
+        <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-blue-600' onClick={() => setOpenCarts(!openCarts)}>Carts 🛒</button>
       </div>
 
       <div className='flex flex-row flex-wrap justify-center'>
