@@ -3,26 +3,41 @@
 import React, { useState, useEffect } from "react";
 import Product from '../classes/product';
 
-const ProductCard = ({ productInfo }) => {
+const ProductLabel = ({ label, value }) => {
     return (
-        <div className='flex flex-row text-white bg-gray-800'>
-            <div className='flex flex-col m-2 p-4 gap-4'>
-                <h3>{productInfo.name}</h3>
-                <p>{productInfo.price}</p>
-                <p>{productInfo.category}</p>
-                <p>{productInfo.description}</p>
-                <p>{productInfo.stock}</p>
-                <p>{productInfo.rating}</p>
-                <p>{productInfo.image_url}</p>
-                <p>{productInfo.sku}</p>
-            </div>
-        </div>
+        <div className = 'flex flex-row' >
+            <p className='font-bold mr-2'>{label}: </p><p>{value}</p>
+        </div >
     )
 }
 
-const ProductRow = ({ product }) => {
+const ProductCard = ({ productInfo, onClose }) => {
+    const labelCSS = 'font bold mr-2';
+
     return (
-        <tr className='text-lefts border border-gray-700'>
+        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-xs">
+            <div className='flex flex-row text-white bg-gray-800 rounded-2xl'>
+                <div className='flex flex-col m-2 p-4 gap-4 rounded-lg'>
+                    <button className='absolute top-2 right-2 rounded-3xl text-white bg-red-500 p-4' onClick={onClose}>Close</button>
+                    <ProductLabel label='Name' value={productInfo.name} />
+                    <ProductLabel label='Price' value={productInfo.price} />
+                    <ProductLabel label='Category' value={productInfo.category} />
+                    <ProductLabel label='Description' value={productInfo.description} />
+                    <ProductLabel label='Stock' value={productInfo.stock} />
+                    <ProductLabel label='Rating' value={productInfo.rating} />
+                    <ProductLabel label='Rating Count' value={productInfo.rating_count} />
+                    <ProductLabel label='Image URL' value={productInfo.image_url} />
+                    <ProductLabel label='SKU' value={productInfo.sku} />
+                </div>
+            </div>
+        </div>
+
+    )
+}
+
+const ProductRow = ({ product, onClick }) => {
+    return (
+        <tr className='text-lefts border border-gray-700' onClick={onClick}>
             <td className='p-4'>{product.name}</td>
             <td className='p-4'>{product.price}</td>
             <td className='p-4'>{product.category}</td>
@@ -33,7 +48,8 @@ const ProductRow = ({ product }) => {
 
 const ProductTable = () => {
     const [products, setProducts] = useState([]);
-
+    const [openModal, setOpenModal] = useState(false);
+    const [modalProduct, setModalProduct] = useState({});
     useEffect(() => {
         fetch('https://api.jsoning.com/mock/public/products')
             .then(response => response.json())
@@ -44,22 +60,33 @@ const ProductTable = () => {
             })
     }, []);
 
+    const handleRowClick = (product) => {
+        setModalProduct(product);
+        setOpenModal(true);
+    }
+
     return (
-        <table className='bg-gray-800 rounded-lg m-12'>
-            <thead className='bg-gray-900 m-2 border-separate'>
-                <tr className='text-left border border-gray-700'>
-                    <th className='p-4'>Name</th>
-                    <th className='p-4'>Price</th>
-                    <th className='p-4'>Category</th>
-                    <th className='p-4'>Stock</th>
-                </tr>
-            </thead>
-            <tbody className='m-2'>
-                {products.map(product => (
-                    <ProductRow product={product} key={product.id} />
-                ))}
-            </tbody>
-        </table>
+        <div>
+            <table className='bg-gray-800 rounded-lg m-12'>
+                <thead className='bg-gray-900 m-2 border-separate'>
+                    <tr className='text-left border border-gray-700'>
+                        <th className='p-4'>Name</th>
+                        <th className='p-4'>Price</th>
+                        <th className='p-4'>Category</th>
+                        <th className='p-4'>Stock</th>
+                    </tr>
+                </thead>
+                <tbody className='m-2'>
+                    {products.map(product => (
+                        <ProductRow onClick={() => handleRowClick(product)} product={product} key={product.id} />
+                    ))}
+                </tbody>
+            </table>
+
+            {openModal && <ProductCard onClose={() => setOpenModal(false)} productInfo={modalProduct} />}
+        </div>
+
+
     )
 }
 
