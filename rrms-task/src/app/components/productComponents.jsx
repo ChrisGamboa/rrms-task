@@ -58,7 +58,7 @@ const AddProductModal = ({ onClose }) => {
                         <ProductInputInfo label='SKU' />
                         <div className='flex justify-center'>
                             <button type='submit' className={`${submitColor} text-white p-3 px-8 m-4 rounded-xl`}>{submitButtonText}</button>
-                            <button className='rounded-xl text-white bg-red-500 p-3 px-8 m-4' onClick={onClose}>Close</button>
+                            <button className='rounded-xl text-white bg-red-500 p-3 px-8 m-4' onClick={onClose}>Cancel</button>
                         </div>
                     </form>
                 </div>
@@ -105,7 +105,7 @@ const ProductRow = ({ product, onClick }) => {
     )
 }
 
-const ProductTable = () => {
+const ProductTable = ({ closeTable }) => {
     const [products, setProducts] = useState([]);
     const [openProductInfoModal, setopenProductInfoModal] = useState(false);
     const [openAddProductModal, setOpenAddProductModal] = useState(false);
@@ -128,10 +128,6 @@ const ProductTable = () => {
 
     return (
         <div>
-            <div className='flex flex-row justify-center'>
-                <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-green-600'
-                    onClick={() => setOpenAddProductModal(true)}>➕ Add Product</button>
-            </div>
             <table className='bg-gray-800 rounded-l m-2'>
                 <thead className='bg-gray-900 border-separate rounded-l'>
                     <tr className='text-left border border-gray-700'>
@@ -147,6 +143,12 @@ const ProductTable = () => {
                     ))}
                 </tbody>
             </table>
+            <div className='flex flex-row justify-center'>
+                <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-green-600'
+                    onClick={() => setOpenAddProductModal(true)}>➕ Add Product</button>
+                <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-red-500'
+                    onClick={closeTable}>Close</button>
+            </div>
 
             {openProductInfoModal && <ProductInfoModal onClose={() => setopenProductInfoModal(false)} productInfo={modalProduct} />}
             {openAddProductModal && <AddProductModal onClose={() => setOpenAddProductModal(false)} />}
