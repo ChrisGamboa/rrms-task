@@ -26,12 +26,12 @@ export default function Home() {
         <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-blue-600' onClick={() => setOpenCarts(!openCarts)}>Carts 🛒</button>
       </div>
 
-      <div className='flex flex-row flex-wrap justify-center'>
+      <div className='flex flex-row justify-center'>
         <div>
           {openProducts && <h2 className='text-3xl m-4'>Products Table</h2>}
           {openProducts && <ProductTable closeTable={() => setOpenProducts(false)} />}
         </div>
-        <div>
+        <div className='overflow-x-auto max-w-[90%]'>
           {openCarts && <h2 className='text-3xl m-4'>Carts Table</h2>}
           {openCarts && <CartsTable closeTable={() => setOpenCarts(false)} />}
         </div>
