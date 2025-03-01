@@ -89,7 +89,7 @@ const CartsRow = ({ cartAndUser, onClick }) => {
     let numOfItems = cartAndUser.cart.items.map(item => item.quantity).reduce((a, b) => a + b, 0);
     console.log(cartAndUser)
     return (
-        <tr className='text-lefts border border-gray-700' onClick={onClick}>
+        <tr className='text-lefts border border-gray-700 transition transform active:scale-120' onClick={onClick}>
             <td className='p-4'>{cartAndUser.user.firstname}</td>
             <td className='p-4'>{cartAndUser.user.lastname}</td>
             <td className='p-4'>{cartAndUser.cart.date}</td>

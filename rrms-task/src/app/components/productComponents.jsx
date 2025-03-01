@@ -96,7 +96,7 @@ const ProductInfoModal = ({ productInfo, onClose }) => {
 
 const ProductRow = ({ product, onClick }) => {
     return (
-        <tr className='text-lefts border border-gray-700' onClick={onClick}>
+        <tr className='text-lefts border border-gray-700 transition transform active:scale-120' onClick={onClick}>
             <td className='p-4'>{product.name}</td>
             <td className='p-4'>{'$' + product.price}</td>
             <td className='p-4'>{product.category}</td>
