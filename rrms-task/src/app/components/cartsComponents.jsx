@@ -77,7 +77,7 @@ const CartInfoModal = ({ cartAndUser, onClose }) => {
                     ))}
                 </div>
                 <div className='flex justify-center'>
-                    <button className='rounded-xl text-white bg-red-500 p-3 px-8 m-4' onClick={onClose}>Close</button>
+                    <button className='rounded-xl text-white bg-red-500 p-3 px-8 m-4 transition transform active:scale-90' onClick={onClose}>Close</button>
                 </div>
             </div>
         </div>
@@ -164,7 +164,7 @@ const CartsTable = ({ closeTable }) => {
                 </tbody>
             </table>
             <div className='flex flex-row justify-center'>
-                <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-red-500'
+                <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-red-500 transition transform active:scale-90'
                     onClick={closeTable}>Close</button>
             </div>
             {openCartInfoModal && <CartInfoModal onClose={() => setOpenCartInfoModal(false)} cartAndUser={modalCart} />}

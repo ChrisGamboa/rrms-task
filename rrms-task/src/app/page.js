@@ -22,8 +22,8 @@ export default function Home() {
         <h1 className='text-4xl justify-center m-4 p-4'>Rapid Response Inventory and Cart Management</h1>
       </div>
       <div className='flex flex-row justify-center'>
-        <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-blue-600' onClick={() => setOpenProducts(!openProducts)}>Products </button>
-        <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-blue-600' onClick={() => setOpenCarts(!openCarts)}>Carts 🛒</button>
+        <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-blue-600 transition transform active:scale-90' onClick={() => setOpenProducts(!openProducts)}>Products </button>
+        <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-blue-600 transition transform active:scale-90' onClick={() => setOpenCarts(!openCarts)}>Carts 🛒</button>
       </div>
 
       <div className='flex flex-row justify-center'>

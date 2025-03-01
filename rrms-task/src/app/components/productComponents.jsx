@@ -57,8 +57,8 @@ const AddProductModal = ({ onClose }) => {
                         <ProductInputInfo label='Image URL' />
                         <ProductInputInfo label='SKU' />
                         <div className='flex justify-center'>
-                            <button type='submit' className={`${submitColor} text-white p-3 px-8 m-4 rounded-xl`}>{submitButtonText}</button>
-                            <button className='rounded-xl text-white bg-red-500 p-3 px-8 m-4' onClick={onClose}>Cancel</button>
+                            <button type='submit' className={`${submitColor} text-white p-3 px-8 m-4 rounded-xl transition transform active:scale-90`}>{submitButtonText}</button>
+                            <button className='rounded-xl text-white bg-red-500 p-3 px-8 m-4 transition transform active:scale-90' onClick={onClose}>Cancel</button>
                         </div>
                     </form>
                 </div>
@@ -86,7 +86,7 @@ const ProductInfoModal = ({ productInfo, onClose }) => {
                     <ProductLabel label='SKU' value={productInfo.sku} />
                 </div>
                 <div className='flex justify-center'>
-                    <button className='rounded-xl text-white bg-red-500 p-3 px-8 m-4' onClick={onClose}>Close</button>
+                    <button className='rounded-xl text-white bg-red-500 p-3 px-8 m-4 transition transform active:scale-90' onClick={onClose}>Close</button>
                 </div>
             </div>
         </div>
@@ -144,9 +144,9 @@ const ProductTable = ({ closeTable }) => {
                 </tbody>
             </table>
             <div className='flex flex-row justify-center'>
-                <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-green-600'
+                <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-green-600 transition transform active:scale-90'
                     onClick={() => setOpenAddProductModal(true)}>➕ Add Product</button>
-                <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-red-500'
+                <button className='flex w-auto rounded-xl m-2 p-4 bg-opacity-25 text-white text-base bg-red-500 transition transform active:scale-90'
                     onClick={closeTable}>Close</button>
             </div>
 
