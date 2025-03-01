@@ -36,6 +36,9 @@ It's a home page with two buttons: **Products** and **Carts**
 
 ### Future Improvements
 - Accessibility!
+- Unit tests
+- Integration tests
+- E2E tests
 - Refactor components into separate files
 - Modularize repeated styles with CSS variables
 - Change ISO date to display in human readable form
