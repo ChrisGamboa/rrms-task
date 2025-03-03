@@ -35,11 +35,27 @@ It's a home page with two buttons: **Products** and **Carts**
 
 
 ### Future Improvements
-- Accessibility!
-- Unit tests
-- Integration tests
-- E2E tests
-- Refactor components into separate files
-- Modularize repeated styles with CSS variables
-- Change ISO date to display in human readable form
+I rapidly protoyped this webapp to demonstrate what was asked in the task document (consume and display web API data), but there are a number of improvements I've identified that could be made:
+- **Accessibility**
+  1. Add IDs
+  2. Change some elements to improve semantic HTML (e.g. use `<label>` instead of `<p>` for row labels)
+  3. Improve keyboard navigation (e.g. table row elements, closing modals)
+  4. Add ARIA roles and labels
+- **Tests**
+  1. Unit tests
+  2. Integration tests
+  3. E2E tests
+- **Refactoring**
+  1. Refactor components into separate files for readability
+  2. Modularize repeated styles or elements with constants/components (e.g. Products and Carts buttons)
+- **Performance Optimization**
+  1. Lift cart and products state up to root level and leverage React's `useMemo()` hook for better optimization
+  2. Improve data models to include labels to avoid hardcoding label values and reduce template sizes
+  3. Add cleanup functions to `useEffect()` hooks
+- **UI/UX**
+  1. Change ISO date to display in human readable form
+  2. Change table row click to shrink transform rather that grow
+  3. Leverage React's Suspense components while fetching data for uniform UX and reduce layout shift
+  4. Fix Product modals not blurring Cart table if it is simultaneously open
+
 - Suggestions you might make!
