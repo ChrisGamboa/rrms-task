@@ -36,7 +36,8 @@ const CartProductLabel = ({ item }) => {
                 setProductInfo({ name: productData.name, description: productData.description });
             })
 
-    })
+    }, [])
+
     return (
         <div>
             <div className='grid grid-cols-1 border-b border-gray-600 my-4' >
